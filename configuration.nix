@@ -14,6 +14,7 @@
     ./users.nix
     ./networking.nix
     ./boot.nix
+    # ./zram.nix
     # ./impermanence.nix
   ];
 
@@ -29,6 +30,7 @@
   custom = {
     boot.enable = true;
     users.enable = true;
+    # zram.enable = true;
   };
 
   # Set your time zone.
