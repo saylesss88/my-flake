@@ -3,6 +3,7 @@
     disk = {
       main = {
         type = "disk";
+        # CHANGE THIS TO YOUR DISK LISTED FROM `lsblk`
         device = "/dev/nvme0n1";
         content = {
           type = "gpt";
