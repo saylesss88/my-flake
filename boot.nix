@@ -7,14 +7,17 @@
   cfg = config.custom.boot;
 in {
   options.custom.boot = {
+    # enabled with `custom.boot.enable = true;` in configuration.nix
     enable = lib.mkEnableOption "Enable the Boot Module";
   };
 
+  # If `custom.boot.enable = true;` then add the following
   config = lib.mkIf cfg.enable {
     boot = {
       # LinuxZen Kernel
       kernelPackages = pkgs.linuxPackages_zen;
       consoleLogLevel = 3;
+      # /tmp in RAM wiped on reboot
       tmp = {
         useTmpfs = true;
         tmpfsSize = "50%";
@@ -67,6 +70,6 @@ in {
       # It will just not appear on screen unless a key is pressed
       # loader.timeout = 0;
     };
-    environment.systemPackages = with pkgs; [greetd.tuigreet];
+    # environment.systemPackages = with pkgs; [greetd.tuigreet];
   };
 }
