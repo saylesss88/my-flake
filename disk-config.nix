@@ -65,13 +65,6 @@
                   # This subvolume will be created but not mounted
                   "/test" = {};
                   # Subvolume for the swapfile
-                  "/nix/persist/swap" = {
-                    mountpoint = "/nix/persist/swap";
-                    mountOptions = ["subvol=swap" "noatime" "nodatacow"];
-                    swap = {
-                      swapfile.size = "8G";
-                    };
-                  };
                 };
               };
             };
