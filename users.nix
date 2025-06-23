@@ -16,9 +16,12 @@
         homeMode = "755";
         isNormalUser = true;
         # Change me!
-        # description = "gitUsername";
+        description = "saylesss88";
         # Change me! generate with `mkpasswd -m SHA-512 -s`
-        # initialHashedPassword = "$6$hLxz1nh01PVcUQ6e$4o6tYrRxbRQQFRN3NSUMkPuwdRpOhNdp1s07TAYr2shcbdQUkYurHyk8Xp8FvjVPwr60N4NSPDmwUr6Nd5FD9.";
+        # initialHashedPassword = "$6$knQSQp4le3uiy..3$gAUAugTxAeHUpWKf6iwlkasdjf'lkajWNZRTtjbJ4X0PIjkIQOCcLcimOJe4Y0";
+        # For Encrypted setup with sops use the following:
+        # hashedPasswordFile = config.sops.secrets.password_hash.path;
+
         extraGroups = [
           "networkmanager"
           "wheel"
@@ -26,7 +29,7 @@
           "scanner"
           "lp"
           "root"
-          #"your-user"
+          # "your-user"
           "sudo"
         ];
         shell = pkgs.zsh;
