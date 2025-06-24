@@ -10,6 +10,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    # Pay attention to if you want disk-config.nix or the following for luks
     ./disk-config2.nix
     ./users.nix
     ./networking.nix

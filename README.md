@@ -28,8 +28,21 @@ git clone https://github.com/saylesss88/my-flake.git
 1. After cloning this repo, change the `flake.nix`, `users.nix`, and
    `configuration.nix` to your wanted hostname and user.
 
-2. Run `lsblk` and make sure the device is correct on line 7 of the
-   `disk-config.nix`. Change it accordingly.
+2. Run `lsblk` and make sure the device is correct in `disk-config.nix`. Change
+   it accordingly.
+
+- There have been some recent changes to this repo, giving the option of an
+  unencrypted setup with `disk-config.nix` and for an encrypted disk setup with
+  `disk-config2.nix`. The process is mainly the same, just with the added step
+  of asking for your encryption passphrase when you format the disk with disko.
+
+- Currently, the impermanence setup only works with `disk-config.nix` and will
+  need to be carefully adjusted to use with the `disk-config2.nix` layout.
+
+- If you want to simplify the encrypted install and take care of sops after
+  install and reboot, just follow this guide and use `disk-config2.nix` for the
+  disko command and ensure you import the correct file in the
+  `configuration.nix`.
 
 3. `initialHashedPassword`: Run `mkpasswd -m SHA-512 -s`, then enter your
    desired password. Use a unique password here as they are susceptible to brute
