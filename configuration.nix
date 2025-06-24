@@ -19,6 +19,14 @@
     # ./sops.nix
     # ./impermanence.nix
   ];
+  # After formatting with disko, the following is more robust
+  # boot.initrd.luks.devices = {
+  #   cryptroot = {
+  #     device = "/dev/disk/by-partlabel/luks";
+  #     allowDiscards = true;
+  #     preLVM = true;
+  #   };
+  # };
 
   # Change me!
   networking.hostName = "magic"; # Define your hostname.
