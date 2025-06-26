@@ -35,6 +35,9 @@
                       mountpoint = "/";
                       mountOptions = ["subvol=root" "compress=zstd" "noatime"];
                     };
+                    "/root-blank" = {
+                      mountOptions = ["subvol=root-blank" "nodatacow" "noatime"];
+                    };
                     "/home" = {
                       mountpoint = "/home";
                       mountOptions = ["subvol=home" "compress=zstd" "noatime"];
