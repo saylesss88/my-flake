@@ -18,6 +18,7 @@
     ./zram.nix
     # ./sops.nix
     # ./impermanence.nix
+    # ./impermanenceLUKS.nix
   ];
   # After formatting with disko, the following is more robust
   # boot.initrd.luks.devices = {
