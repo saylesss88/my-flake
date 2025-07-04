@@ -19,6 +19,8 @@
     # ./impermanence.nix
     # ./impermanenceLUKS.nix
   ];
+
+  # Testing making a change and pushing
   # After formatting with disko, the following is more robust
   # boot.initrd.luks.devices = {
   #   cryptroot = {
