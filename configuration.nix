@@ -16,7 +16,6 @@
     ./networking.nix
     ./boot.nix
     ./zram.nix
-    # ./sops.nix
     # ./impermanence.nix
     # ./impermanenceLUKS.nix
   ];
