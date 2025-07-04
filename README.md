@@ -4,6 +4,8 @@
 - This is a starter repo attempting to save you some time and effort. It is used
   for both encrypted and unencrypted setups so pay attention to paths etc.
 
+Testing,testing,testing
+
 - If you run into any problems or run into problems open an issue and I'll try
   to get to it ASAP.
 
