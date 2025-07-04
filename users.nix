@@ -19,6 +19,7 @@
         # description = "gitUsername";
         # Change me! generate with `mkpasswd -m SHA-512 -s`
         # initialHashedPassword = "$6$knlskdQSQp4le3uiy..3$gAUAugTxAeHUpWKf6iwlkasdjf'lkajWNZRTtjbJ4X0PIjkIQOCcLcimOJe4Y0";
+        # Testing This is a test
 
         extraGroups = [
           "networkmanager"
