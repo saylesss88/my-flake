@@ -271,3 +271,6 @@ sudo nixos-rebuild switch --flake ~/my-flake
 4. I recently did this and skipped the `cp -a` step and it wouldn't even let me
    reboot from the command line. However after I force shut it down and booted
    back up, it regenerated the necessary files and rebuilt without an issue.
+5. I recently did this and skipped the `cp -a` step and it wouldn't even let me
+   reboot from the command line. However after I force shut it down and booted
+   back up, it regenerated the necessary files and rebuilt without an issue.
