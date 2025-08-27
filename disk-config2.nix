@@ -10,7 +10,7 @@
             ESP = {
               label = "boot";
               name = "ESP";
-              size = "512M";
+              size = "1G";
               type = "EF00";
               content = {
                 type = "filesystem";
@@ -57,6 +57,11 @@
                     "/lib" = {
                       mountpoint = "/var/lib";
                       mountOptions = ["subvol=lib" "compress=zstd" "noatime"];
+                    };
+                    "/persist/swap" = {
+                      mountpoint = "/persist/swap";
+                      mountOptions = ["subvol=swap" "noatime" "nodatacow" "compress=no"];
+                      swap.swapfile.size = "18G";
                     };
                   };
                 };

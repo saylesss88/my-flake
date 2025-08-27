@@ -17,7 +17,6 @@
         modules = [
           ./configuration.nix
           inputs.disko.nixosModules.disko
-          inputs.sops-nix.nixosModules.sops
           # inputs.impermanence.nixosModules.impermanence
         ];
       };

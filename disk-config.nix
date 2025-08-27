@@ -12,7 +12,7 @@
               priority = 1;
               name = "ESP";
               start = "1M";
-              end = "512M";
+              end = "1G";
               type = "EF00";
               content = {
                 type = "filesystem";
@@ -61,6 +61,11 @@
                   "/lib" = {
                     mountpoint = "/var/lib";
                     mountOptions = ["subvol=lib" "compress=zstd" "noatime"];
+                  };
+                  "/nix/persist/swap" = {
+                    mountpoint = "/persist/swap";
+                    mountOptions = ["subvol=swap" "noatime" "nodatacow" "compress=no"];
+                    swap.swapfile.size = "18G";
                   };
                   # This subvolume will be created but not mounted
                   "/test" = {};
