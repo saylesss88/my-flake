@@ -57,8 +57,8 @@ git clone https://github.com/saylesss88/my-flake.git
 > single thing and break your system and have to start completely over. Be
 > careful!
 
-3. `initialHashedPassword`: Run `mkpasswd -m SHA-512 -s > /tmp/pass.txt`, then
-   enter your desired password. Use a unique password here as they are
+3. `initialHashedPassword`: Run `mkpasswd --method=yescrypt > /tmp/pass.txt`,
+   then enter your desired password. Use a unique password here as they are
    susceptible to brute force attacks. Example output:
 
 - Open the `users.nix` or wherever you need the hashed password and move your
@@ -113,6 +113,74 @@ sudo mv ~/my-flake /mnt/etc/nixos/
 sudo nixos-install --flake /mnt/etc/nixos/my-flake#hostname
 # or
 sudo nixos-install --flake /mnt/etc/nixos/my-flake .#hostname
+```
+
+## Create a Blank Snapshot of /root for Impermanence
+
+This is essential if you plan on using impermanence with this encrypted setup.
+We take a snapshot of `/root` while it's a clean slate, right after we run disko
+to format the disk. I recommend following this for both setups, although we use
+a different method for unencrypted impermanence this will give you more options.
+
+To access all of the subvolumes, we have to mount the Btrfs partitions
+top-level.
+
+1. Unlock the LUKS device, if not already unlocked as it should be from running
+   disko:
+
+```bash
+sudo cryptsetup open /dev/disk/by-partlabel/luks cryptroot
+```
+
+2. Mount the Btrfs top-level (`subvolid=5`):
+
+```bash
+sudo mount -o subvolid=5 /dev/mapper/cryptroot /mnt
+```
+
+3. List the contents:
+
+```bash
+ls /mnt
+# you should see something like
+root   home  nix  persist  log  lib  ...
+```
+
+4. Now we can take a snapshot of the `root` subvolume:
+
+```bash
+sudo btrfs subvolume snapshot -r /mnt/root /mnt/root-blank
+```
+
+5. Verify Your Blank Snapshot:
+
+Before continuing, make sure your blank snapshot exists. This is crucial for
+impermanence to work properly.
+
+```bash
+sudo btrfs subvolume list /mnt
+```
+
+You should see output containing both `root` and `root-blank` subvolumes:
+
+```bash
+ID 256 gen ... path root
+ID 257 gen ... path root-blank
+```
+
+Check that the snapshot is read only, this ensures that our snapshot will remain
+the same as the day we took it. It was set `ro` in disko but lets check anyways:
+
+```bash
+sudo btrfs property get -ts /mnt/root-blank
+# output should be
+ro=true
+```
+
+5. Make sure to unmount:
+
+```bash
+sudo umount /mnt
 ```
 
 You will be prompted to enter a new password and shown if the install was
@@ -259,6 +327,19 @@ to roll our system back to making it a bit more robust.
     Defaults lecture = never
   '';
 }
+```
+
+Although, just adding the `disk-config2.nix` works for prompting you for your
+encryption passphrase adding the following is a more robust way of ensuring Nix
+is aware of this:
+
+```nix
+    boot.initrd.luks.devices = {
+    cryptroot = {
+      device = "/dev/disk/by-partlabel/luks";
+      allowDiscards = true;
+    };
+  };
 ```
 
 3. Apply the changes:
