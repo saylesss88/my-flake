@@ -48,10 +48,10 @@ git clone https://github.com/saylesss88/my-flake.git
   of asking for your encryption passphrase when you format the disk with disko.
 
 - Click here for
-  [Unencrypted Impermanence](https://saylesss88.github.io/nix/impermanence.html)
+  [Unencrypted Impermanence](https://saylesss88.github.io/installation/unencrypted/impermanence.html)
 
 - Click here for
-  [Encrypted Impermanence](https://saylesss88.github.io/nix/encrypted_impermanence.html)
+  [Encrypted Impermanence](https://saylesss88.github.io/installation/enc/encrypted_impermanence.html)
 
 > ❗ Note: Impermanence is destructive by nature, it is very easy to mess up a
 > single thing and break your system and have to start completely over. Be
