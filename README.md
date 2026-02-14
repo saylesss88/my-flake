@@ -40,7 +40,7 @@ git clone https://github.com/saylesss88/my-flake.git
 
 2. Run `lsblk` and make sure the device is correct in `disk-config.nix`. Change
    line #6, `device = "/dev/nvme0n1"` accordingly. Also, decide if you want a
-   swapfile as defined, 2G over the size of your RAM is safe.
+   swapfile as defined, 2G over the size of your RAM is typically safe.
 
 - There have been some recent changes to this repo, giving the option of an
   unencrypted setup with `disk-config.nix` and for an encrypted disk setup with
