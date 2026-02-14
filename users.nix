@@ -19,15 +19,10 @@
         # description = "gitUsername";
         # Change me! generate with `mkpasswd -m SHA-512 -s`
         # initialHashedPassword = "$6$knlskdQSQp4le3uiy..3$gAUAugTxAeHUpWKf6iwlkasdjf'lkajWNZRTtjbJ4X0PIjkIQOCcLcimOJe4Y0";
-        # Testing This is a test
-        # Testing This is a test
 
         extraGroups = [
           "networkmanager"
           "wheel"
-          "libvirtd"
-          "scanner"
-          "lp"
           "root"
           # "your-user"
           "sudo"
@@ -43,5 +38,7 @@
         ];
       };
     };
+    # Best practice, enables `chown -R your-user:your-user`
+    users.groups.your-user = {};
   };
 }

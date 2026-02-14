@@ -20,7 +20,6 @@
     # ./impermanenceLUKS.nix
   ];
 
-  # Testing making a change and pushing
   # After formatting with disko, the following is more robust for LUKS
   # boot.initrd.luks.devices = {
   #   cryptroot = {
@@ -48,5 +47,5 @@
 
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.11"; # Did you read the comment?
 }
